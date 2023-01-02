@@ -10,7 +10,7 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 st.title("Generador de ideas de negocios")
 
 # Solicitar al usuario que ingrese su idea de negocio
-wish = st.text_input("¿Qué idea tienes? o escribe '?' para que el programa te sugiera una.")
+wish = st.text_input("¿Qué idea tienes? O escribe '?' para que el programa te sugiera una.")
 
 # Utilizar GPT-3 para generar un plan de negocios para la idea del usuario
 model_engine = "text-davinci-003"
