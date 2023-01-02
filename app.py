@@ -20,7 +20,7 @@ def generate_business_idea(prompt):
 
 st.title("Generador de ideas de negocios")
 
-st.markdown("Escribe una breve descripción de tus intereses y te sugeriremos algunas ideas de negocios que podrías explorar.")
+st.markdown("Escribe una breve descripción de tus intereses y te sugeriremos algunas ideas de negocios que podrías explorar. Incluye una descripción del negocio en sí.")
 
 prompt = st.text_input("Descripción de tus intereses y del negocio")
 
