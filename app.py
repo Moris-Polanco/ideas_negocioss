@@ -9,8 +9,8 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 # Crear una interfaz de usuario con streamlit
 st.title("Generador de ideas de negocios")
 
-# Solicitar al usuario que ingrese su deseo y un nombre de usuario para la idea de negocio
-wish = st.text_input("¿Qué deseas que exista en tu ciudad?")
+# Solicitar al usuario que ingrese su idea de negocio
+wish = st.text_input("¿Qué idea tienes?")
 
 # Utilizar GPT-3 para generar un plan de negocios para la idea del usuario
 model_engine = "text-davinci-003"
