@@ -5,25 +5,27 @@ import os
 # Autenticación de OpenAI (oculta la clave en una variable de entorno)
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-def generate_business_idea(prompt):
-    completions = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
 
-    message = completions.choices[0].text
-    return message.strip()
-
+# Crear una interfaz de usuario con streamlit
 st.title("Generador de ideas de negocios")
 
-st.markdown("Escribe una breve descripción de tus intereses y te sugeriremos algunas ideas de negocios que podrías explorar. Incluye una descripción del negocio en sí.")
+# Solicitar al usuario que ingrese su deseo y un nombre de usuario para la idea de negocio
+wish = st.text_input("¿Qué deseas que exista en tu ciudad?")
+username = st.text_input("Ingresa tu nombre")
 
-prompt = st.text_input("Descripción de tus intereses y del negocio")
+# Utilizar GPT-3 para generar un plan de negocios para la idea del usuario
+model_engine = "text-davinci-003"
+prompt = (f"Generar una idea de negocio basada en el deseo de {username}: '{wish}'. Incluir nombre de la idea, una línea corta, persona objetivo del usuario, puntos de dolor del usuario a resolver, principales propuestas de valor, canales de ventas y marketing, fuentes de ingresos por ventas, estructuras de costos, actividades clave, recursos clave, socios clave, pasos de validación de la idea, costo estimado del primer año de operación y desafíos comerciales potenciales a considerar. ")
 
-if st.button("Generar idea de negocio"):
-    business_idea = generate_business_idea(prompt)
-    st.success(business_idea)
+completions = openai.Completion.create(
+    engine=model_engine,
+    prompt=prompt,
+    max_tokens=1024,
+    n=1,
+    stop=None,
+    temperature=0.7,
+)
+
+# Mostrar el resultado en una tabla en formato markdown
+business_plan = completions.choices[0].text
+st.markdown(business_plan)
