@@ -1,6 +1,6 @@
 import openai
 import streamlit as st
-import pdfkit
+import weasyprint
 import os
 
 # Autenticación de OpenAI (oculta la clave en una variable de entorno)
@@ -33,7 +33,7 @@ with open("temp.html", "w") as f:
   f.write(business_plan)
 
 # Convierte el archivo HTML a PDF
-pdfkit.from_file("temp.html", "business_plan.pdf")
+weasyprint.HTML(string=business_plan).write_pdf("business_plan.pdf")
 
 # Muestra el PDF en la aplicación
 st.markdown("Se ha creado un archivo PDF con el plan de negocios. Haga clic en el botón a continuación para descargar el archivo.")
