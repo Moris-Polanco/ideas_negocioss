@@ -24,17 +24,6 @@ completions = openai.Completion.create(
     stop=None,
     temperature=0.7,
 )
-
 # Mostrar el resultado en una tabla en formato markdown
 business_plan = completions.choices[0].text
-
-# Crea un archivo HTML temporal para almacenar el resultado del plan de negocios
-with open("temp.html", "w") as f:
-  f.write(business_plan)
-
-# Convierte el archivo HTML a PDF
-weasyprint.HTML(string=business_plan).write_pdf("business_plan.pdf")
-
-# Muestra el PDF en la aplicación
-st.markdown("Se ha creado un archivo PDF con el plan de negocios. Haga clic en el botón a continuación para descargar el archivo.")
-st.markdown("[Descargar PDF](business_plan.pdf)")
+st.markdown(business_plan)
