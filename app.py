@@ -28,7 +28,7 @@ completions = openai.Completion.create(
 business_plan = completions.choices[0].text
 
 # Crea una tabla en formato markdown con dos columnas
-table = "| Columna 1 | Columna 2 |\n| --- | --- |\n"
+table = "| Ítem | Solución |\n| --- | --- |\n"
 
 # Separa el texto en líneas
 lines = business_plan.split("\n")
