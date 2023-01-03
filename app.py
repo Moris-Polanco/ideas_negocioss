@@ -1,13 +1,12 @@
 import openai
 import streamlit as st
-import weasyprint
 import os
 
 # Autenticación de OpenAI (oculta la clave en una variable de entorno)
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Crear una interfaz de usuario con streamlit
-st.title("Generador de ideas de negocios")
+st.title("Generador de planes de negocios")
 
 # Solicitar al usuario que ingrese su idea de negocio
 wish = st.text_input("¿Qué idea tienes? O deja en blanco y espera.")
