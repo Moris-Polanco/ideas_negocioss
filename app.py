@@ -1,10 +1,10 @@
 import openai
 import streamlit as st
+import pdfkit
 import os
 
 # Autenticación de OpenAI (oculta la clave en una variable de entorno)
 openai.api_key = os.environ.get("OPENAI_API_KEY")
-
 
 # Crear una interfaz de usuario con streamlit
 st.title("Generador de ideas de negocios")
@@ -27,4 +27,14 @@ completions = openai.Completion.create(
 
 # Mostrar el resultado en una tabla en formato markdown
 business_plan = completions.choices[0].text
-st.markdown(business_plan)
+
+# Crea un archivo HTML temporal para almacenar el resultado del plan de negocios
+with open("temp.html", "w") as f:
+  f.write(business_plan)
+
+# Convierte el archivo HTML a PDF
+pdfkit.from_file("temp.html", "business_plan.pdf")
+
+# Muestra el PDF en la aplicación
+st.markdown("Se ha creado un archivo PDF con el plan de negocios. Haga clic en el botón a continuación para descargar el archivo.")
+st.markdown("[Descargar PDF](business_plan.pdf)")
