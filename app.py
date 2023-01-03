@@ -7,6 +7,7 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Crear una interfaz de usuario con streamlit
 st.title("Generador de planes de negocios")
+st.caption("Por Moris Polanco")
 
 # Solicitar al usuario que ingrese su idea de negocio
 wish = st.text_input("¿Qué idea tienes? O deja en blanco y espera.")
