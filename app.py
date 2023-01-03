@@ -23,13 +23,16 @@ completions = openai.Completion.create(
     stop=None,
     temperature=0.7,
 )
-# Separa el resultado del plan de negocios en líneas
+# Obtén el texto del resultado del plan de negocios
+business_plan = completions.choices[0].text
+
+# Separa el texto en líneas
 lines = business_plan.split("\n")
 
 # Crea una tabla en formato markdown con dos columnas
 table = "| Columna 1 | Columna 2 |\n| --- | --- |\n"
 
-# Agrega cada línea del resultado del plan de negocios a la tabla en una fila diferente
+# Agrega cada línea del texto a la tabla en una fila diferente
 for line in lines:
   table += f"| {line} | |\n"
 
