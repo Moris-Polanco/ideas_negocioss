@@ -27,4 +27,4 @@ completions = openai.Completion.create(
 
 # Mostrar el resultado en una tabla en formato markdown
 business_plan = completions.choices[0].text
-st.write(business_plan)
+st.markdown(business_plan)
