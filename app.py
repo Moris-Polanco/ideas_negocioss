@@ -23,18 +23,25 @@ completions = openai.Completion.create(
     stop=None,
     temperature=0.7,
 )
+
 # Obtén el texto del resultado del plan de negocios
 business_plan = completions.choices[0].text
-
-# Separa el texto en líneas
-lines = business_plan.split("\n")
 
 # Crea una tabla en formato markdown con dos columnas
 table = "| Columna 1 | Columna 2 |\n| --- | --- |\n"
 
-# Agrega cada línea del texto a la tabla en una fila diferente
+# Separa el texto en líneas
+lines = business_plan.split("\n")
+
+# Recorre cada línea del texto
 for line in lines:
-  table += f"| {line} | |\n"
+  # Dividir la línea en dos partes en base al carácter ":"
+  parts = line.split(":", 1)
+  # Agregar cada parte a una columna de la tabla
+  if len(parts) == 2:
+    table += f"| {parts[0]} | {parts[1]} |\n"
+  else:
+    table += f"| {parts[0]} | |\n"
 
 # Muestra la tabla en la aplicación
 st.markdown(table)
