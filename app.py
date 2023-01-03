@@ -28,17 +28,12 @@ completions = openai.Completion.create(
 # Mostrar el resultado en una tabla en formato markdown
 business_plan = completions.choices[0].text
 
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen.canvas import Canvas
+# Crea un archivo HTML temporal para almacenar el resultado del plan de negocios
+with open("temp.html", "w") as f:
+  f.write(business_plan)
 
-# Crea un archivo PDF
-c = Canvas("business_plan.pdf", pagesize=letter)
-
-# Dibuja el texto del plan de negocios en el archivo PDF
-c.drawString(100, 750, business_plan)
-
-# Guarda el archivo PDF
-c.save()
+# Convierte el archivo HTML a PDF
+weasyprint.HTML(string=business_plan).write_pdf("business_plan.pdf")
 
 # Muestra el PDF en la aplicación
 st.markdown("Se ha creado un archivo PDF con el plan de negocios. Haga clic en el botón a continuación para descargar el archivo.")
