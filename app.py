@@ -14,7 +14,7 @@ wish = st.text_input("¿Qué idea tienes? O deja en blanco y espera.")
 
 # Utilizar GPT-3 para generar un plan de negocios para la idea del usuario
 model_engine = "text-davinci-003"
-prompt = (f"Generar una idea de negocio basada en '{wish}'. Incluir nombre de la idea, una línea corta, persona objetivo del usuario, puntos de dolor del usuario a resolver, principales propuestas de valor, canales de ventas y marketing, fuentes de ingresos por ventas, estructuras de costos, actividades clave, recursos clave, socios clave, pasos de validación de la idea, costo estimado del primer año de operación y desafíos comerciales potenciales a considerar. ")
+prompt = (f"Generar una idea de negocio basada en '{wish}'. Incluir nombre de la idea, una línea corta, persona objetivo del usuario, puntos de dolor del usuario a resolver, principales propuestas de valor, descripción detallada de la idea, canales de ventas y marketing, fuentes de ingresos por ventas, estructuras de costos, actividades clave, recursos clave, socios clave, pasos de validación de la idea, costo estimado del primer año de operación y desafíos comerciales potenciales a considerar. ")
 
 completions = openai.Completion.create(
     engine=model_engine,
