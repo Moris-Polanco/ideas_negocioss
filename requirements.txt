@@ -1,5 +1,2 @@
 openai
 streamlit
-weasyprint
-Pango
-glib
